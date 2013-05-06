@@ -231,6 +231,9 @@ directory.views.SearchPage = Backbone.View.extend({
         $(this.el).html(this.template(this.model.toJSON()));
         this.listView = new directory.views.EmployeeListView({el: $('ul', this.el), model: this.model});
         this.listView.render();
+
+
+
         return this;
     },
 
@@ -440,6 +443,9 @@ employeeDAO.populate(function() {
     directory.utils.templateLoader.load(['search-page', 'report-page', 'employee-page', 'employee-list-item'],
         function() {
             directory.app = new directory.Router();
+
             Backbone.history.start();
+
+            $("input.search-key").focus().trigger("keyup");
         });
 });
